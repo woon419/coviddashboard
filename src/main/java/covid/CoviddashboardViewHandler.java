@@ -6,9 +6,7 @@ import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CoviddashboardViewHandler {
@@ -28,6 +26,8 @@ public class CoviddashboardViewHandler {
                 coviddashboard.setName(reserved.getName());
                 coviddashboard.setReservationDate(reserved.getReservationDate());
                 coviddashboard.setReservationTime(reserved.getReservationTime());
+
+                coviddashboard.setStatus("RESERVED");
                 // view 레파지 토리에 save
                 coviddashboardRepository.save(coviddashboard);
             }
